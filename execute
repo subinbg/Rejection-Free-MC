@@ -1,0 +1,7 @@
+#chmod 755 execute
+mpiifort -c math_module.f90
+mpiifort -c basics.f90
+mpiifort -I basics.o -c mc_module.f90
+mpiifort basics.o mc_module.o math_module.o lj_test.f90 
+rm *.dat
+mpirun -n 4 ./a.out
